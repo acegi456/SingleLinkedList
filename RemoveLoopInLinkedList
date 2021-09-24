@@ -1,0 +1,35 @@
+class Solution
+{
+    public static void removeLoop(Node head){
+        Node x=head,z=head;
+        Set<Node> s=new HashSet<Node>();
+        int temp=0;
+        Node y=null,g;
+        while(!(x.next==null)&&temp==0)
+        {
+            if(!(s.contains(x)))
+            {
+                s.add(x);
+                if(s.contains(x.next))
+                {
+                    x.next=null;
+                    temp=1;
+                }
+                else
+                x=x.next;
+                
+            }
+            else
+            {
+                temp=1;
+                y=x;
+                
+            }
+        }
+        while(z.next!=y)
+        {
+            z=z.next;
+        }
+        z.next=null;
+    }
+}
